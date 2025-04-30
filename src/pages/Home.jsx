@@ -11,9 +11,11 @@ import {
     VStack,
     HStack,
     Icon,
-    Divider
+    Divider,
+    Image
 } from '@chakra-ui/react';
-import { FaDesktop, FaMobile, FaGamepad, FaArrowRight } from 'react-icons/fa';
+import { FaDesktop, FaMobile, FaGamepad, FaArrowRight, FaUserGraduate, FaLaptopCode, FaRegLightbulb } from 'react-icons/fa';
+import { Link as RouterLink } from 'react-router-dom';
 
 const Home = () => {
     // Servicios
@@ -52,6 +54,25 @@ const Home = () => {
         {
             category: "GAME",
             title: "PlayStation Vita reduce su precio a 199 dólares/euros",
+        }
+    ];
+
+    // Beneficios para practicantes
+    const practicasBeneficios = [
+        {
+            icon: FaUserGraduate,
+            title: "Experiencia Real",
+            description: "Trabaja en proyectos reales con clientes de diferentes industrias."
+        },
+        {
+            icon: FaLaptopCode,
+            title: "Tecnologías Avanzadas",
+            description: "Aprende a usar las tecnologías más demandadas en el mercado laboral."
+        },
+        {
+            icon: FaRegLightbulb,
+            title: "Mentoría Personalizada",
+            description: "Recibe guía y retroalimentación constante de profesionales expertos."
         }
     ];
 
@@ -98,6 +119,8 @@ const Home = () => {
                                 size="lg"
                                 px={8}
                                 _hover={{ bg: 'whiteAlpha.200' }}
+                                as={RouterLink}
+                                to="/contacto"
                             >
                                 Contáctanos
                             </Button>
@@ -106,7 +129,7 @@ const Home = () => {
                 </Container>
             </Box>
 
-            {/* Sección de Servicios - MEJORADA */}
+            {/* Sección de Servicios */}
             <Box py={10} bg="white">
                 <Container maxW="container.xl">
                     <Center>
@@ -166,7 +189,7 @@ const Home = () => {
                 </Container>
             </Box>
 
-            {/* Sección de Noticias - MEJORADA */}
+            {/* Sección de Noticias */}
             <Box py={16} bg="gray.50">
                 <Container maxW="container.xl">
                     <VStack spacing={2} mb={10} textAlign="center">
@@ -244,6 +267,8 @@ const Home = () => {
                                 bg="#fc0341"
                                 color="white"
                                 _hover={{ bg: '#d0032f' }}
+                                as={RouterLink}
+                                to="/nosotros"
                             >
                                 Conócenos más
                             </Button>
@@ -283,10 +308,112 @@ const Home = () => {
                             px={8}
                             mt={4}
                             _hover={{ bg: 'gray.100' }}
+                            as={RouterLink}
+                            to="/contacto"
                         >
                             Escríbenos
                         </Button>
                     </VStack>
+                </Container>
+            </Box>
+
+            {/* Sección Prácticas Profesionales */}
+            <Box py={16} bg="gray.100">
+                <Container maxW="container.xl">
+                    <SimpleGrid columns={{ base: 1, md: 2 }} spacing={12} alignItems="center">
+                        <Box>
+                            <Text color="#fc0341" fontWeight="bold" textTransform="uppercase" mb={2}>
+                                OPORTUNIDAD PARA ESTUDIANTES
+                            </Text>
+                            <Heading as="h2" size="xl" mb={4}>
+                                Realiza tus Prácticas Profesionales con Nosotros
+                            </Heading>
+                            <Divider w="100px" borderColor="#fc0341" borderWidth="3px" mb={6} />
+
+                            <Text fontSize="lg" mb={6} color="gray.700">
+                                En Ambar Rojo ofrecemos a estudiantes la oportunidad de desarrollar sus habilidades
+                                en un entorno profesional. Forma parte de nuestro equipo y participa en proyectos reales
+                                mientras complementas tu formación académica.
+                            </Text>
+
+                            <SimpleGrid columns={{ base: 1, md: 3 }} spacing={4} mb={8}>
+                                {practicasBeneficios.map((beneficio, index) => (
+                                    <Box
+                                        key={index}
+                                        p={4}
+                                        bg="white"
+                                        borderRadius="md"
+                                        boxShadow="sm"
+                                        transition="all 0.3s"
+                                        _hover={{ transform: "translateY(-5px)", boxShadow: "md" }}
+                                    >
+                                        <Flex
+                                            w="50px"
+                                            h="50px"
+                                            bg="#fc0341"
+                                            color="white"
+                                            borderRadius="full"
+                                            justifyContent="center"
+                                            alignItems="center"
+                                            mb={3}
+                                        >
+                                            <Icon as={beneficio.icon} fontSize="xl" />
+                                        </Flex>
+                                        <Heading as="h4" size="md" mb={2}>
+                                            {beneficio.title}
+                                        </Heading>
+                                        <Text fontSize="sm" color="gray.600">
+                                            {beneficio.description}
+                                        </Text>
+                                    </Box>
+                                ))}
+                            </SimpleGrid>
+
+                            <Button
+                                as={RouterLink}
+                                to="/practicantes"
+                                bg="#fc0341"
+                                color="white"
+                                size="lg"
+                                px={8}
+                                rightIcon={<FaArrowRight />}
+                                _hover={{ bg: '#d0032f' }}
+                            >
+                                Postularme ahora
+                            </Button>
+                        </Box>
+
+                        <Flex justifyContent="center">
+                            <Box
+                                position="relative"
+                                width="100%"
+                                height="400px"
+                                borderRadius="lg"
+                                overflow="hidden"
+                                boxShadow="xl"
+                            >
+                                <Image
+                                    src="https://placehold.co/600x400/fc0341/white?text=Practicas+Profesionales"
+                                    alt="Prácticas profesionales"
+                                    objectFit="cover"
+                                    width="100%"
+                                    height="100%"
+                                />
+                                <Box
+                                    position="absolute"
+                                    bottom={0}
+                                    left={0}
+                                    right={0}
+                                    bg="blackAlpha.600"
+                                    p={4}
+                                    color="white"
+                                    textAlign="center"
+                                >
+                                    <Text fontWeight="bold">¡Impulsa tu carrera profesional con nosotros!</Text>
+                                </Box>
+                            </Box>
+                        </Flex>
+                    </SimpleGrid>
                 </Container>
             </Box>
         </Box>
