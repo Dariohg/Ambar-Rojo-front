@@ -9,7 +9,7 @@ import {
     Stack,
     Link
 } from '@chakra-ui/react';
-import { HamburgerIcon, CloseIcon, EmailIcon } from '@chakra-ui/icons'; // Añadir EmailIcon aquí
+import { HamburgerIcon, CloseIcon, EmailIcon } from '@chakra-ui/icons';
 import { Link as RouterLink } from 'react-router-dom';
 
 const NavLink = ({ children, to }) => (
@@ -63,6 +63,8 @@ export default function Navbar() {
                 </HStack>
                 <Flex alignItems={'center'}>
                     <Button
+                        as={RouterLink}
+                        to="/contacto"
                         variant={'solid'}
                         colorScheme={'red'}
                         size={'sm'}
@@ -82,6 +84,7 @@ export default function Navbar() {
                                 {link.name}
                             </NavLink>
                         ))}
+                        <NavLink to="/contacto">Contacto</NavLink>
                     </Stack>
                 </Box>
             ) : null}
